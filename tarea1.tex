@@ -1,0 +1,134 @@
+\documentclass[14pt]{extarticle}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{xparse, amsmath, physics}
+
+\usepackage{anysize}
+\marginsize{1cm}{1cm}{1.3cm}{1.3cm}
+\renewcommand{\baselinestretch}{1.2}
+\parindent  = 0mm
+\parskip = 4mm
+
+\usepackage[usenames]{color}
+\definecolor{azul}{RGB}{10,80,190}
+\definecolor{negro}{RGB}{0,0,0}
+\definecolor{rojo}{RGB}{190,80,10}
+\definecolor{verde}{RGB}{0,120,50}
+
+\begin{document}
+    \title{
+        Matemáticas para las ciencias aplicadas IV\\
+        Tarea 1
+    }
+    \author{
+        Careaga Carrillo Juan Manuel\\
+        Quiróz Castañeda Edgar\\
+        Soto Corderi Sandra del Mar
+    }
+    \date{13 de marzo de 2019}
+    \maketitle
+    \thispagestyle{empty}
+    \pagebreak
+    \begin{enumerate}
+        % Ejercicio 1
+        \item {
+            Resolver las ecuaciones diferenciales
+            \begin{enumerate}
+                % a)
+                \item {
+                    $\dv{y}{t}+\sqrt{1+t^2}e^{-t}y=0$
+                    con $y(0)=1$
+
+                    \color{azul}
+                    % Respuesta
+                }
+                
+                % b)
+                \item {
+                    $\dv{y}{t}+\frac{t}{1-t^2}y=1-\frac{t^3}{1+t^4}y$.
+                    Graficar algunas soluciones.
+
+                    \color{azul}
+                    % Respuesta
+                }
+                
+                % c)
+                \item {
+                    $\cos{y}\dv{y}{t}=\frac{-t\sen{y}}{1+t^2}$
+                    con $y(1)=\frac{\pi}{2}$
+
+                    \color{azul}
+                    % Respuesta
+                }
+                
+                % d)
+                \item {
+                    $\dv{y}{t}=1-t+y^2-ty^2$.
+                    Graficar algunas soluciones.
+
+                    \color{azul}
+                    % Respuesta
+                }
+                
+                % e)
+                \item {
+                    $ye^{xy}\cos{2x}-2e^{xy}\sen{2x}+2x+
+                    (xe^{xy}\cos{2x}-3)\dv{y}{x}=0$
+
+                    \color{azul}
+                    % Respuesta
+                }
+                
+                % f)
+                \item {
+                    $(t+2)\sen{y}+t\cos{y}\dv{y}{t}=0$
+
+                    \color{azul}
+                    % Respuesta
+                }
+                
+                % g)
+                \item {
+                    $\left(3t+\frac{6}{y}\right)
+                    +\left(\frac{t^2}{y}+3\frac{y}{t}\right)\dv{y}{t}=0$
+
+                    \color{azul}
+                    % Respuesta
+                }
+            \end{enumerate}
+        }
+        
+        % Ejercicio 2
+        \item {
+            Hallar todas las funciones $g(t)$ que hacen que la ecuación
+            diferencial $$y^2\sen{t}+yg(t)\dv{y}{t}=0$$ sea exacta.
+
+            \color{azul}
+            % Respuesta
+        }
+        
+        % Ejercicio 3
+        \item {
+            Las ecuaciones diferenciales de la forma $$\dv{y}{t}=f(y/t)$$ se
+            pueden resolver si se hace el cambio de variable $v=y/t$. Mostrar
+            que la ecuación toma la forma $$t\dv{v}{t}+v=f(v).$$ Usar este
+            método para resolver $$\dv{y}{t}=\frac{t+y}{t-y}.$$
+
+            \color{azul}
+            % Respuesta
+        }
+        
+        % Ejercicio 4
+        \item {
+            Una población crece de acuerdo a la ley logística, y tiene un
+            límite de $5\times 10^8$ individuos. Cuando la población es baja se
+            suplica cada 40 minutos. ¿Qué valor tendrá la población después de
+            dos horas si inicialmente era de a) $10^8$ individuos y b) $10^9$
+            individuos?
+
+            \color{azul}
+            % Respuesta
+        }
+    \end{enumerate}
+\end{document}
