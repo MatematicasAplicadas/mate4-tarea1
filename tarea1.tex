@@ -78,6 +78,60 @@
 
                     \color{azul}
                     % Respuesta
+                    Consideremos $M = ye^{xy}\cos{2x}-2e^{xy}\sen{2x}+2x$ y $N = 
+                    xe^{xy}\cos{2x}-3$. \\
+                    Entoces
+                    \begin{align*}
+                        \dv{M}{y} 
+                        &= \dv{(ye^{xy}\cos{2x}-2e^{xy}\sen{2x}+2x)}{y}
+                        = \dv{ye^{xy}}{y}\cos{2x} - 2\dv{e^{xy}}{y}\sen{2x} + 0 \\
+                        &= (e^{xy} + xye^{xy}) \cos{2x}- 2xye^{xy}\sen{2x} \\
+                        &= e^{xy}\cos{2x} + xye^{xy}\cos{2x} - 2xye^{xy}\sen{2x}
+                    \end{align*}
+                    Y
+                    \begin{align*}
+                        \dv{N}{x} 
+                        &= \dv{(xe^{xy}\cos{2x}-3)}{x} = \dv{xe^{xy}\cos{2x}}{x}
+                        -\dv{3}{x} \\
+                        &= e^{xy}\cos{2x} + x (ye^{xy}\cos{2x} 
+                        + e^{xy}(-\sen{2x})2) + 0 \\
+                        &= e^{xy}\cos{2x} + x(ye^{xy}\cos{2x} - 2ye^{xy}\sen{2x})\\
+                        &= e^{xy}\cos{2x} + xye^{xy}\cos{2x} - 2xye^{xy}\sen{2x}\\
+                        &= \dv{M}{y} 
+                    \end{align*}
+                    Por lo que la ecuación es exacta. Esto es, que existe una 
+                    $\phi(x, y)$ tal que $\dv{\phi}{x} = M$ y $\dv{\phi}{y} = N$\\
+                    Para encontrar la primitiva, es más sencillo integrar $N$
+                    respecto a $y$.
+                    \begin{align*}
+                        \phi(x, y) &= \int{N dy}
+                        = \int{(xe^{xy}\cos{2x}-3) dy} \\
+                        &= \cos{2x} \int{xe^{xy} dy} - \int{3dy}
+                        = e^{xy}\cos{2x} - 3y + g(x)
+                    \end{align*}
+                    Y queda como incógnita $g(x)$, pero se puede obtener usando 
+                    el hecho de que $M$ es la derivada respecto a $x$ de la 
+                    primitva
+                    \begin{align*}
+                        M 
+                        &= \dv{\phi(x, y)}{x} 
+                        = \dv{(e^{xy}\cos{2x} - 3y + g(x))}{x} \\
+                        ye^{xy}\cos{2x} - 2e^{xy}\sen{2x} + 2x 
+                        &= ye^{xy}\cos{2x} - 2e^{xy}\sen{2x} + g'(x)\\
+                        \implies g'(x) = 2x &\implies g(x) = \int{2xdx} = x^{2}
+                    \end{align*}
+                    Por lo que la primitiva sin incógnitas es 
+                    \[\phi(x, y) = e^{xy}\cos{2x} - 3y + 2x\]
+                    Luego, despejando $y$.
+                    \begin{align*} 
+                        \implies e^{xy}\cos{2x} &= 3y - 2x \\
+                        \implies e^{xy} &= \frac{3y - 2x}{\cos{2x}} \\
+                        \implies xy &= ln(\frac{3y - 2x}{\cos{2x}}) \\
+                        \implies y &= \frac{1}{x}ln(\frac{3y - 2x}{\cos{2x}}) \\
+                        \implies y &= ln((\frac{3y - 2x}{\cos{2x}})^{x^{-1}})
+                    \end{align*}
+                    Vemos que no se puede despejar, pero se pueden aproximar las 
+                    soluciones.
                 }
                 
                 % f)
@@ -86,6 +140,22 @@
 
                     \color{azul}
                     % Respuesta
+                    Modificando la ecuación, tenemos que 
+                    \begin{align*}
+                        &\implies t\cos{y}\dv{y}{t} = -(t+2)\sen{y} \\
+                        &\implies \dv{y}{t} = -\frac{(t+2)\sen{y}}{t\cos{y}} \\
+                        &\implies \dv{y}{t} = -\frac{\frac{t+2}{t}}{\cot{y}}
+                    \end{align*}
+                    Que es de la forma de una ecuación separable. Por lo que, 
+                    para resolverla, hay que resolver
+                    \begin{align*}
+                        &\implies \cot{y} dy = -(1 + \frac{2}{t})dt \\
+                        &\implies \int{\cot{y} dy} = -\int{(1 + \frac{2}{t})dt} \\
+                        &\implies ln \abs{\sin{y}}= -(t + 2 ln \abs{t}) + C \\
+                        &\implies \abs{\sin{y}} = C e^{-(t + 2 ln \abs{t})} \\
+                        &\implies \sin{y} = \pm (C e^{-(t + 2 ln \abs{t})}) \\
+                        &\implies y = \arcsin (\pm (C e^{-(t + 2 ln \abs{t})}))
+                    \end{align*}
                 }
                 
                 % g)
@@ -95,6 +165,36 @@
 
                     \color{azul}
                     % Respuesta
+                    Primero, hay que multiplicar todo por $ty$.
+                    \[(3t^{2}y+6t)+(t^{3}+3y^{2})\dv{y}{t}=0\]
+                    Entonces, con $M = 3t^{2}y+6t$ y $N = t^{3}+3y^{2}$ se tiene
+                    que 
+                    \[\dv{M}{y} = 3t^{2} = \dv{N}{t}\]
+                    Por lo que la ecuación es exacta, esto es que existe una 
+                    $\phi$ primitiva de $M$ y $N$\\
+                    Luego, integrando $M$ respecto a $t$.
+                    \[\int{M dt} = \int{(3t^{2}y+6t)dt} = t^{3}y + 3t^{2} + g(y)\]
+                    Integrando $N$ respecto a $y$.
+                    \[\int{N dy} = \int{(t^{3}+3y^{2})dt} = t^{3}y + y^{3} + h(t)\]
+                    Por lo que la forma de la expresión sin incógnitas es 
+                    \[\phi(y, t) = t^{3}y + y^{3} + 3t^{2}\]
+                    Luego, despejando $y$
+                    \begin{align*}
+                        &\implies y = -\frac{y^{3} + 3t^{2}}{t^{3}} \\
+                        &\implies y + \frac{y^{3}}{t^{3}} = \frac{3}{t} \\
+                        &\implies y + \frac{y^{3}}{t^{3}} - \frac{3}{t}  = 0 \\
+                        &\implies y^{3} + yt^{3} - 3t^{2}  = 0
+                    \end{align*}
+                    Que está en la forma de una ecuación cúbica deprimida que, 
+                    por la fórmula de Cardano, tiene solución real
+                    \begin{align*}
+                        y &= \sqrt[3]{-\frac{-3t^{2}}{2} + \sqrt{\frac{(-3t^{2})^{2}}{4} 
+                    + \frac{(t^{3})^{3}}{27}}} + \sqrt[3]{-\frac{-3t^{2}}{2} - \sqrt{\frac{(-3t^{2})^{2}}{4} 
+                    + \frac{(t^{3})^{3}}{27}}} \\
+                    &= \sqrt[3]{\frac{3t^{2}}{2} + \sqrt{\frac{9t^{4}}{4} 
+                    + \frac{t^{9}}{27}}} + \sqrt[3]{\frac{3t^{2}}{2} - \sqrt{\frac{9t^{4}}{4} 
+                    + \frac{t^{9}}{27}}}
+                    \end{align*}
                 }
             \end{enumerate}
         }
