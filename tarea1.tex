@@ -3,6 +3,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{enumerate}
 \usepackage{xparse, amsmath, physics}
+\usepackage{cancel}
+
+\decimalpoint
 
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1.3cm}{1.3cm}
@@ -29,9 +32,9 @@
     \date{13 de marzo de 2019}
     \maketitle
     \thispagestyle{empty}
-    \pagebreak
     \begin{enumerate}
         % Ejercicio 1
+        \pagebreak
         \item {
             Resolver las ecuaciones diferenciales
             \begin{enumerate}
@@ -100,15 +103,31 @@
         }
         
         % Ejercicio 2
+        \pagebreak
         \item {
             Hallar todas las funciones $g(t)$ que hacen que la ecuación
             diferencial $$y^2\sen{t}+yg(t)\dv{y}{t}=0$$ sea exacta.
 
             \color{azul}
-            % Respuesta
+            Supongamos que la ecuación dada es exacta.
+            
+            Sea $M(t,y)=y^2\sen{t}$ y sea $N(t,y)=yg(t)$. Como la ecuación
+            diferencial es exacta, entonces se cumple que
+            $\pdv{M}{y}=\pdv{N}{t}$, es decir
+            $$\pdv{M}{y}=2y\sen{t}=yg'(t)=\pdv{N}{t}$$
+            Entonces
+            $$g'(t)=2\sen{t}$$
+            $$g(t)=\int{2\sen{t}\dd t}=-2\cos{t}+h(y)$$
+            Para que la ecuación diferencial pueda resolverse es necesario que
+            la función $g$ sólo dependa de una variable, ya estaba establecida
+            la dependencia con la variable $t$, por lo que $h(y)=C$.
+
+            Por lo que la familia de funciones $g(t)=-2\cos{t}+C$ hacen que la
+            ecuación diferencial sea exacta.
         }
         
         % Ejercicio 3
+        \pagebreak
         \item {
             Las ecuaciones diferenciales de la forma $$\dv{y}{t}=f(y/t)$$ se
             pueden resolver si se hace el cambio de variable $v=y/t$. Mostrar
@@ -116,19 +135,121 @@
             método para resolver $$\dv{y}{t}=\frac{t+y}{t-y}.$$
 
             \color{azul}
-            % Respuesta
+            Sea $v=y/t$, entonces $y=vt$ y podemos hacer un cambio de variable
+            \begin{align*}
+                \dv{y}{t}             &= f(y/t)\\[.3cm]
+                \dv{(vt)}{t}          &= f(v)\\[.3cm]
+                v\dv{t}{t}+t\dv{v}{t} &= f(v)\\[.3cm]
+                t\dv{v}{t}+v          &= f(v)
+            \end{align*}
+            Ahora, para resolver la ecuación $\dv{y}{t}=\frac{t+y}{t-y}$
+            hacemos el cambio de variable $v=y/t$, o bien, $y=vt$.
+            \begin{align*}
+                \dv{(vt)}{t}          &= \frac{1+vt}{1-vt}\\[.3cm]
+                v\dv{t}{t}+t\dv{v}{t} &= \frac{t(1+v)}{t(1-v)}\\[.3cm]
+                v+tv'                 &= \frac{1+v}{1-v}\\[.3cm]
+                tv'                   &= \frac{1+v}{1-v}-v\\[.3cm]
+                tv'                   &= \frac{1+v^2}{1-v}\\[.3cm]
+                \frac{1-v}{1+v^2}v'   &= \frac{1}{t}
+            \end{align*}
+            Sea $F(v)$ tal que $F'(v)=\frac{1-v}{1+v^2}$ entonces $\dv{F(v(t))}
+            {t}=\dv{F}{v}\dv{v}{t}=\frac{1-v}{1+v^2}v'$, integramos respecto de
+            $t$ de ambos lados
+            \begin{align*}
+                \int{\dv{F(v)}{t}\,\dd t} &= \int{\frac{1}{t}\,\dd t}\\[.3cm]
+                \int{\frac{1-v}{1+v^2}\,\dd v} &= \ln{\abs{t}}+C\\[.3cm]
+                \int{\frac{1}{1+v^2}\,\dd v}-\int{\frac{v}{1+v^2}\,\dd v}
+                &= \ln{\abs{t}}+C\\[.3cm]
+                \tan^{-1}{v}-\frac{1}{2}\ln{\abs{1+v^2}}&=\ln{\abs{t}}+C
+            \end{align*}
+            No es posible despejar a la $v$, por lo que sólo resta revertir el
+            cambio de variable
+            $$\tan^{-1}{\left(\frac{y}{t}\right)}
+            -\frac{1}{2}\ln{\abs{1+\left(\frac{y}{t}\right)^2}}
+            =\ln{\abs{t}}+C$$
         }
         
         % Ejercicio 4
+        \pagebreak
         \item {
             Una población crece de acuerdo a la ley logística, y tiene un
             límite de $5\times 10^8$ individuos. Cuando la población es baja se
-            suplica cada 40 minutos. ¿Qué valor tendrá la población después de
-            dos horas si inicialmente era de a) $10^8$ individuos y b) $10^9$
+            duplica cada 40 minutos. ¿Qué valor tendrá la población después de
+            dos horas si inicialmente era de \emph{a}) $10^8$ individuos y
+            \emph{b}) $10^9$
             individuos?
 
             \color{azul}
-            % Respuesta
+            La ley logística nos dice que
+            \[
+                P(t)=\frac{P_0 a}{P_0 b+(a-P_0 b)e^{-a(t-t_0)}}
+            \]
+            donde $\frac{a}{b}=5\times 10^8$ marca el límite o estabilidad
+            poblacional, $P_0$ es la población inicial, $t_0$ es el tiempo
+            inicial (que en este caso lo consideraremos $t_0=0$).
+
+            Cuando la población es baja utilizamos la ecuación logística
+            $\dv{P}{t}=KP_0$ cuya solución es $P(t)=(P_0)e^{at}$. Utilizaremos
+            esta información para encontrar el valor de $a$ y eventualmente el
+            de $b$.
+            \begin{enumerate}
+                \item Si $P_0=10^8$ y sabemos que
+                $P(40)=2\times 10^8=10^8e^{a(40)}$. Despejando a la $a$
+                \begin{align*}
+                    2 &= e^{40a}\\
+                    \ln{2} &= 40a\\
+                    a &= \frac{\ln{2}}{40}\\
+                    a &\approx 0.01733
+                \end{align*}
+                Por el límite de población, tenemos que
+                $\frac{a}{b}=5\times 10^8$, ahora que tenemos $a$ podemos
+                encontrar $b$
+                \begin{align*}
+                    b &= \frac{a}{5\times 10^8}\\[.2cm]
+                    b &= \frac{\frac{\ln{2}}{40}}{5\times 10^8}\\[.2cm]
+                    b &= \frac{\ln{2}}{200\times 10^8}\\[.2cm]
+                    b &\approx 34.65\times 10^{-12}
+                \end{align*}
+                Ya que tenemos todo lo que necesitamos, podemos aplicar la
+                ecuación logística inicial, con el tiempo en minutos (para
+                simplificar la notación se han dejado los valores de $a$ y de
+                $b$ expresado con sus literales):
+                \begin{align*}
+                    P(120) &= \frac{a\times 10^8}
+                    {b\times 10^8+(a-b\times 10^8)e^{-a(120-0)}}\\[.3cm]
+                    &\approx \frac{1732867.95}{0.003465+(0.01386)
+                    e^{-0.01733(120)}}\\
+                    &\approx 333'333'333.33\\
+                    &\approx 3.3333\times 10^8 \text{ individuos.}
+                \end{align*}
+
+                \item Ahora si $P_0=10^9$ individuos procedemos de manera
+                análoga.
+                \begin{align*}
+                    P(40)=2\times\cancel{10^9}&=\cancel{10^9}e^{a(40)}\\[.2cm]
+                    2 &= e^{40a}
+                \end{align*}
+                Por lo que los valores de $a$ y de $b$ no dependen de la
+                población inicial y son los mismos que en inciso anterior.
+
+                Aplicando la ecuación logística
+                \begin{align*}
+                    P(120) &= \frac{a\times 10^9}
+                    {b\times 10^9+(a-b\times 10^9)e^{-a(120-0)}}\\[.3cm]
+                    &\approx \frac{17328679.514}{0.03465+(-0.01732)
+                    e^{-0.01733(120)}}\\[.3cm]
+                    &\approx 533'333'333.33\\[.2cm]
+                    &\approx 5.3333\times 10^8 \text{ individuos.}
+                \end{align*}
+                Notemos que en este caso la población supera el límite
+                poblacional que era de $5\times 10^8$, esto puede deberse a que
+                consideramos la población inicial de $10^9$ como ``baja''
+                cuando en realidad no hay un criterio adecuado para determinar
+                cuando la población es considerada como ``baja''. Sin embargo
+                al aplicar la ecuación logística para tiempos más grandes
+                podemos notar que la población se estabiliza hacia su límite,
+                por ejemplo $P(240)\approx5.04\times 10^8$ individuos.
+            \end{enumerate}
         }
     \end{enumerate}
 \end{document}
